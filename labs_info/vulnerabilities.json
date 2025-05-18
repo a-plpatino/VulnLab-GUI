@@ -1,0 +1,10 @@
+{
+    "XSS": {
+      "description": "Cross-Site Scripting permite inyectar código malicioso.",
+      "example": "<script>alert('XSS')</script>"
+    },
+    "SQLi": {
+      "description": "SQL Injection manipula consultas SQL.",
+      "example": "' OR 1=1--"
+    }
+  }  

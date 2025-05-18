@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  flasklab:
+    container_name: vulnlab-flask
+    build:
+      context: ./dockerfiles/custom_flask_lab
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./dockerfiles/custom_flask_lab:/app
+      - ./payloads.db:/app/payloads.db
+    command: ["python", "app.py"]
+
+  sqli_lab:
+    container_name: vulnlab-sqli
+    build:
+      context: ./dockerfiles/sqli_lab
+      dockerfile: Dockerfile
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./payloads.db:/app/payloads.db
+
+  csrf_lab:
+    container_name: vulnlab-csrf
+    build:
+      context: ./dockerfiles/csrf_lab
+      dockerfile: Dockerfile
+    ports:
+      - "5004:5004"
+    volumes:
+      - ./dockerfiles/csrf_lab:/app
+      - ./payloads.db:/app/payloads.db
